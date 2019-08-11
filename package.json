@@ -1,0 +1,14 @@
+{
+  "name": "learn-webworkers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve"
+  },
+  "peerDependencies": {
+    "serve": "latest"
+  },
+  "author": "George O. E. Campbell",
+  "license": "UNLICENSE"
+}
