@@ -29,39 +29,36 @@ window.onload = function() {
       output.textContent = '';
     });
     const data = ['apple', 'orange'];
-    let t0;
     fake0.addEventListener('click', () => {
-      t0 = Date.now();
-      fakeWorker.postMessage(data);
       output.textContent += '\n\nStarted NoWorker only.';
+      fakeWorker.postMessage(Date.now());
     });
     real0.addEventListener('click', () => {
-      t0 = Date.now();
-      myWorker.postMessage(data);
       output.textContent += '\n\nStarted Worker only.';
+      myWorker.postMessage(Date.now());
     });
     both0.addEventListener('click', () => {
-      t0 = Date.now();
-      fakeWorker.postMessage(data);
-      myWorker.postMessage(data);
       output.textContent += '\n\nStarted NoWorker then Worker.';
+      fakeWorker.postMessage(Date.now());
+      myWorker.postMessage(Date.now());
     });
     both1.addEventListener('click', () => {
-      t0 = Date.now();
-      myWorker.postMessage(data);
-      fakeWorker.postMessage(data);
       output.textContent += '\n\nStarted Worker then NoWorker.';
+      myWorker.postMessage(Date.now());
+      fakeWorker.postMessage(Date.now());
     });
 
-    myWorker.onmessage = function(e) {
-      console.log('message received from real worker:', e.data);
-      output.textContent += '\nWithWorker response: ' + e.data;
+    myWorker.onmessage = function({ data }) {
+      const t0 = data.input;
+      console.log('message received from real worker:', data.output);
+      output.textContent += '\nWorker response: ' + data.output;
       output.textContent +=
         '\nWorker response took ' + (Date.now() - t0) / 1000 + ' s\n';
     };
-    fakeWorker.onmessage = function(e) {
-      console.log('message received from fake worker:', e.data);
-      output.textContent += '\nNoWorker response: ' + e.data;
+    fakeWorker.onmessage = function({ data }) {
+      const t0 = data.input;
+      console.log('message received from fake worker:', data.output);
+      output.textContent += '\nNoWorker response: ' + data.output;
       output.textContent +=
         '\nNoWorker response took ' + (Date.now() - t0) / 1000 + ' s\n';
     };

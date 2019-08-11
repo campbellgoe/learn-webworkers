@@ -1,4 +1,4 @@
-function complex(data) {
+function complex(input) {
   let t0 = Date.now();
   let output = 0;
   const n = 10e6;
@@ -9,5 +9,5 @@ function complex(data) {
       break;
     }
   }
-  return data[0] + output + data[1];
+  return { input, output };
 }
