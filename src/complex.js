@@ -3,11 +3,11 @@ function complex(input) {
   let output = 0;
   const n = 10e6;
   for (let i = 0; i < n; i++) {
-    output += parseInt(i + ''.slice(-1)) / n;
+    output = Math.random();
     if (Date.now() - t0 > 1000 * 8) {
       console.error('took too long (> 8s)');
       break;
     }
   }
-  return { input, output };
+  return { input, output: 'Did ' + n + ' iterations.' };
 }

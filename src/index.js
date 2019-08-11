@@ -53,14 +53,14 @@ window.onload = function() {
       console.log('message received from real worker:', data.output);
       output.textContent += '\nWorker response: ' + data.output;
       output.textContent +=
-        '\nWorker response took ' + (Date.now() - t0) / 1000 + ' s\n';
+        '\nWorker response took ' + (Date.now() - t0) / 1000 + ' s';
     };
     fakeWorker.onmessage = function({ data }) {
       const t0 = data.input;
       console.log('message received from fake worker:', data.output);
       output.textContent += '\nNoWorker response: ' + data.output;
       output.textContent +=
-        '\nNoWorker response took ' + (Date.now() - t0) / 1000 + ' s\n';
+        '\nNoWorker response took ' + (Date.now() - t0) / 1000 + ' s';
     };
   } else {
     alert('sorry no worker support');
