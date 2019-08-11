@@ -1,0 +1,17 @@
+{
+  "name": "learn-webworkers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec serve -s",
+    "open": "open https://localhost:5000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "nodemon": "latest",
+    "serve": "latest"
+  },
+  "author": "",
+  "license": "ISC"
+}
